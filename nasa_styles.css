@@ -5,12 +5,41 @@ body {
     flex-direction: column;
 }
 
+h1 {
+    font-family: Arial;
+}
+
 #subject {
     width: 600px;
     height: 50px;
     font-size: 34px;
 }
 
+
+/* The link menu between the different pages */
+/* index.php, images.php and videos.php */
+.filter-links {
+    padding-top: 20px;
+    font-family: Arial;
+}
+
+.filter-links a {
+    color: black;
+    font-style: normal;
+}
+
+.filter-links a:active {
+    font-weight: 700;
+}
+
+.filter-links a:visited {
+    color: black;
+    font-style: normal;
+}
+
+.filter-links a:hover {
+    font-style: italic;
+}
 
 
 /* The container wrapping the whole page from under the search result info data
