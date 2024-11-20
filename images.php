@@ -8,6 +8,7 @@
 </head>
 <body>
     <h1>NASA API - Images</h1>
+    <a href="index.php" id="apod-link">To Astronomy Picture of the Day</a>
     <form name="form" action="" method="post">
         <input type="text" name="subject" id="subject" value="">
     </form>
@@ -36,7 +37,7 @@ $data = json_decode($response, true);
 
 // Add navigation links
 echo '<div class="filter-links">';
-    echo '<a href="index.php?subject=' . urlencode($search_term) . '&page=' . 1 . '">Show All Results</a> | ';
+    echo '<a href="search.php?subject=' . urlencode($search_term) . '&page=' . 1 . '">Show All Results</a> | ';
     echo '<a href="images.php?subject=' . urlencode($search_term) . '&page=' . 1 . '">Show Only Images</a> | ';
     echo '<a href="videos.php?subject=' . urlencode($search_term) . '&page=' . 1 . '">Show Only Videos</a>';
 echo '</div>';
@@ -71,7 +72,7 @@ if (isset($data['collection']['items']) && count($data['collection']['items']) >
             echo "<h2>Title: " . htmlspecialchars($item['data'][0]['title']) . "</h2>";
             echo '<button type="button" class="collapsible">Description: </button>';
             echo '<div class="content">';
-            echo "<p style='font-family:  Arial;'>" . htmlspecialchars($item['data'][0]['description']) . "</p>";
+            echo "<p style='font-family:  Arial; font-size: 15px; font-weight: 500;'>" . htmlspecialchars($item['data'][0]['description']) . "</p>";
 
             // Display the image
             foreach ($item['links'] as $link) {

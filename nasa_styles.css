@@ -9,10 +9,51 @@ h1 {
     font-family: Arial;
 }
 
+
+/* Link to Apod - Astronomy Picture of the days */
+#apod-link {
+    margin-top: 15px;
+    font-style: none;
+    text-decoration: none;
+    color: black;
+    font-family: Arial;
+    transition: color 0.3s ease; 
+}
+
+#apod-link:active {
+    text-decoration: none;
+    font-style: none;
+    color: black;
+}
+
+#apod-link:hover {
+    color: orange;
+    text-decoration: underline;
+}
+
+#apod-link:visited {
+    text-decoration: none;
+    font-style: none;
+    color: black;
+}
+
+#apod-link:visited:hover {
+    color: orange;
+}
+
+#apod-link:active:hover {
+    color: orange;
+}
+
 #subject {
     width: 600px;
     height: 50px;
     font-size: 34px;
+}
+
+#subject:focus {
+    outline: none;
+    border: 2px solid orange;
 }
 
 
@@ -47,6 +88,7 @@ h1 {
 
 .main-container {
     flex: 1;
+    margin-top: 10px;
 }
 
 
@@ -55,7 +97,7 @@ h1 {
 .div-container {
     margin-top: 20px;
     padding: 10px;
-    border: 2px solid black;
+    border: 2px solid orange;
 }
 
 h2 {
@@ -63,7 +105,7 @@ h2 {
 }
 
 .collapsible {
-    background-color: #777;
+    background-color: orange;
     color: white;
     cursor: pointer;
     padding: 18px;
@@ -75,14 +117,13 @@ h2 {
 }
   
 .active, .collapsible:hover {
-    background-color: #555;
+    background-color: orange;
 }
   
 .content {
     padding: 0 18px;
     display: none;
     overflow: hidden;
-    background-color: #f1f1f1;
 }
 
 
