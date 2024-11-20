@@ -67,7 +67,7 @@ if (isset($data['collection']['items']) && count($data['collection']['items']) >
         echo "<h2>Title: " . htmlspecialchars($item['data'][0]['title']) . "</h2>";
         echo '<button type="button" class="collapsible">Description: </button>';
         echo '<div class="content">';
-        echo "<p>" . htmlspecialchars($item['data'][0]['description']) . "</p>";
+        echo "<p style='font-family:  Arial;'>" . htmlspecialchars($item['data'][0]['description']) . "</p>";
 
         // Check if 'links' are present in the item
         if (isset($item['href'])) {
@@ -130,7 +130,11 @@ if (isset($data['collection']['items']) && count($data['collection']['items']) >
 
 echo '</div>'; // Close the main div
 
-echo '<div id="copyright"> &copy; Alexandru Florin </div>';
+// Footer
+echo '<footer style="font-family: Arial";>';
+echo '<p>This page uses the NASA API and its purpose is to search for videos and images posted by NASA. All media copyright goes to the copyright holder(s).</p>';
+echo '<div id="copyright">&copy; Alexandru Florin </div>';
+echo '</footer>';
 
 // Close cURL session
 curl_close($ch);

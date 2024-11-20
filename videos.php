@@ -38,8 +38,9 @@ $data = json_decode($response, true);
 echo '<div class="filter-links">';
   echo '<a href="index.php?subject=' . urlencode($search_term) . '&page=' . 1 . '">Show All Results</a> | ';
   echo '<a href="videos.php?subject=' . urlencode($search_term) . '&page=' . 1 . '">Show Only Videos</a> | ';
-  echo '<a href="images.php?subject=' . urlencode($search_term) . '&page= ' .  1  . '">Show Only Images</a>';
+  echo '<a href="images.php?subject=' . urlencode($search_term) . '&page=' . 1 . '">Show Only Images</a>';
 echo '</div>';
+
 
 // Display the results
 if (isset($data['collection']['items']) && count($data['collection']['items']) > 0) {
@@ -62,7 +63,7 @@ if (isset($data['collection']['items']) && count($data['collection']['items']) >
                             echo "<h2>Title: " . htmlspecialchars($item['data'][0]['title']) . "</h2>";
                             echo '<button type="button" class="collapsible">Description: </button>';
                             echo '<div class="content">';
-                            echo "<p>" . htmlspecialchars($item['data'][0]['description']) . "</p>";
+                            echo "<p style='font-family:  Arial;'>" . htmlspecialchars($item['data'][0]['description']) . "</p>";
                             echo '<video width="100%" height="auto" controls>';
                             echo '<source src="' . htmlspecialchars($resource) . '" type="video/mp4">';
                             echo 'Your browser does not support the video tag.';
@@ -95,7 +96,10 @@ if (isset($data['collection']['items']) && count($data['collection']['items']) >
 echo '</div>'; // Close the main div
 
 // Footer
+echo '<footer style="font-family: Arial";>';
+echo '<p>This page uses the NASA API and its purpose is to search for videos and images posted by NASA. All media copyright goes to the copyright holder(s).</p>';
 echo '<div id="copyright">&copy; Alexandru Florin </div>';
+echo '</footer>';
 ?>
 
 
