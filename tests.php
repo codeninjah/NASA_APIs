@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NASA</title>
-    <link rel="stylesheet" href="nasa_styles.css"> <!-- Link to CSS file -->
+    <link rel="stylesheet" href="tests.css"> <!-- Link to CSS file -->
 </head>
 <body>
     <h1>NASA API</h1>
@@ -83,7 +83,13 @@ if (isset($data['collection']['items']) && count($data['collection']['items']) >
     foreach ($data['collection']['items'] as $item) {
         echo '<div class="div-container">';
         echo "<h2>Title: " . htmlspecialchars($item['data'][0]['title']) . "</h2>";
-        echo '<button type="button" class="collapsible">Description: </button>';
+
+        echo "<div class='collapsible-content'>";
+
+        echo '<div class="collapsible">';
+        echo "<desc> Description: </desc>" . "<desctext>" . substr(htmlspecialchars($item['data'][0]['description']), 0, 100) . " ... </desctext>";
+        echo '</div>';
+
         echo '<div class="content">';
         echo "<p style='font-family:  Arial; font-size: 15px; font-weight: 500;'>" . htmlspecialchars($item['data'][0]['description']) . "</p>";
             
@@ -125,6 +131,7 @@ if (isset($data['collection']['items']) && count($data['collection']['items']) >
         }
 
         echo "</div>";
+        echo "</div>";
         echo '</div>';
     }
 
@@ -163,30 +170,34 @@ curl_close($ch);
 <script>
 
 /* Code for the dynamic collapse */
-var coll = document.getElementsByClassName("collapsible");
+var coll = document.getElementsByClassName("collapsible"); // Get all elements with the "collapsible" class
 var i;
+
 
 for (i = 0; i < coll.length; i++) {
   coll[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var content = this.nextElementSibling;
+    this.classList.toggle("active"); // Toggle the "active" class on the clicked collapsible element
+    var content = this.nextElementSibling; // Get the next sibling (content to collapse)
+    
+    // Get the specific <desctext> within the current "col[i]" element
+    var descriptionText = this.querySelector("desctext");
+
+    // Check the current display status of the content to toggle its visibility
     if (content.style.display === "block") {
-      content.style.display = "none";
+      content.style.display = "none"; // Hide the content
+      if (descriptionText) {
+        descriptionText.style.visibility = "visible"; // Show the <desctext> using visibility (instead of display)
+      }
     } else {
-      content.style.display = "block";
+      content.style.display = "block"; // Show the content
+      if (descriptionText) {
+        descriptionText.style.visibility = "hidden"; // Hide the <desctext> using visibility (instead of display)
+      }
     }
   });
 }
 
-/*
-var hiddenDiv = document.getElementById("results-meta");
 
-function removeHiddenClass(){
-    console.log("Results-meta found");
-    hiddenDiv.classList.add("visible");
-    hiddenDiv.classList.remove("hidden");
-}
-*/
 
 </script>
 </body>
