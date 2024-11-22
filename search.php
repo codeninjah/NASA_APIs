@@ -52,12 +52,29 @@ if (curl_errno($ch)) {
     $total_pages = ceil($total_items / $page_size); // Calculate total pages
 
     // Add a text outputting what the search keyword is
+    echo "<div id='results-meta' class='hidden'>";
     echo "<h3>Results for <em>" . htmlspecialchars($search_term) . "</em></h3>";
     echo "<h4> Your search has returned <em>" . $total_items . "</em> items. There are totally <em>" . $total_pages . "</em> pages. ";
-
+    echo "</div>";
 
 // Display the results
 if (isset($data['collection']['items']) && count($data['collection']['items']) > 0) {
+
+    // Removing the class "hidden" from the div above the code displaying the results
+        echo '<script type="text/javascript">
+            var hiddenDiv = document.getElementById("results-meta");
+            function removeHiddenClass() {
+                console.log("Results-meta found");
+                if (hiddenDiv) {
+                    hiddenDiv.classList.add("visible");
+                    hiddenDiv.classList.remove("hidden");
+                } else {
+                    console.log("Element not found");
+                }
+            }
+            removeHiddenClass();
+        </script>';
+
     // Add navigation links
     echo '<div class="filter-links">';
         echo '<a href="videos.php?subject=' . urlencode($search_term) . '&page=' . 1 . '">Show Only Videos</a> | ';
@@ -160,6 +177,17 @@ for (i = 0; i < coll.length; i++) {
     }
   });
 }
+
+/*
+var hiddenDiv = document.getElementById("results-meta");
+
+function removeHiddenClass(){
+    console.log("Results-meta found");
+    hiddenDiv.classList.add("visible");
+    hiddenDiv.classList.remove("hidden");
+}
+*/
+
 </script>
 </body>
 </html>
